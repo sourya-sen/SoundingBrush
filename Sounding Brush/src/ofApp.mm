@@ -24,6 +24,7 @@ void ofApp::setup(){
     //gBrushSelector->setWidth(100);
     gBrushSelector->select(gBrushOptions.size() - 1);
     gBrushSelector->setTheme(new ofxDatGuiThemeSoundingBrush());
+    gBrushSelector->setWidth(ofGetWidth()/4.0);
     gBrushSelector->onDropdownEvent(this, &ofApp::onDropDownEvent);
     selectedBrushFromGui = gBrushOptions.size() - 1; //placeholder -> make sure this corresponds to gBrushSelector->select(index) otherwise nasty things will happen
     
@@ -34,12 +35,14 @@ void ofApp::setup(){
     colorFromGui = ofColor::fromHsb(hue, sat, bright);
     
     gColorSelectorF = new ofxDatGuiFolder("Color Selector", ofColor::white);
+    gColorSelectorF->setTheme(new ofxDatGuiThemeSoundingBrush());
+    gColorSelectorF->onSliderEvent(this, &ofApp::onSliderEvent);
+    gColorSelectorF->setPosition(ofGetWidth()/4.0, 20);
+    gColorSelectorF->setWidth(ofGetWidth()/4.0);
     gColorSelectorF->addSlider("Hue", 0, 360, 180);
     gColorSelectorF->addSlider("Saturation", 0, 100, 50);
     gColorSelectorF->addSlider("Brightness", 0, 1, 0.5);
-    gColorSelectorF->setPosition(550, 20);
-    gColorSelectorF->setTheme(new ofxDatGuiThemeSoundingBrush());
-    gColorSelectorF->onSliderEvent(this, &ofApp::onSliderEvent);
+
     
 //    gColorPicker = new ofxDatGuiColorPicker("Select Color!", ofColor::yellow);
 //    gColorPicker->setPosition(600, 0);
@@ -48,11 +51,14 @@ void ofApp::setup(){
     
     brushWidthFromGui = 20.0;
     gBrushWidth = new ofxDatGuiSlider("Character", 1, 100);
-    gBrushWidth->setPosition(1100, 20);
+    gBrushWidth->setTheme(new ofxDatGuiThemeSoundingBrush());
+    gBrushWidth->setPosition(ofGetWidth()/4.0 * 2, 20);
+    gBrushWidth->setWidth(ofGetWidth()/4.0, ofGetWidth()/8.0);
 //    gBrushWidth->setWidth(100, 100);
     gBrushWidth->onSliderEvent(this, &ofApp::onSliderEvent);
     gBrushWidth->setValue(brushWidthFromGui);
-    gBrushWidth->setTheme(new ofxDatGuiThemeSoundingBrush());
+
+
     
     /*
      gClearScreen = new ofxDatGuiButton("Clear canvas");
@@ -63,13 +69,14 @@ void ofApp::setup(){
      */
     
     gBrushErasers = new ofxDatGuiFolder("Erase", ofColor::yellow);
+    gBrushErasers->setTheme(new ofxDatGuiThemeSoundingBrush());
+    gBrushErasers->setWidth(ofGetWidth()/4.0);
+    gBrushErasers->onButtonEvent(this, &ofApp::onButtonEvent);
     gBrushErasers->addButton("Last");
     gBrushErasers->addButton("Palette");
     gBrushErasers->addButton("Canvas");
-    gBrushErasers->setPosition(1650, 20);
-    gBrushErasers->setTheme(new ofxDatGuiThemeSoundingBrush());
-    gBrushErasers->setWidth(ofGetWidth() - 1650);
-    gBrushErasers->onButtonEvent(this, &ofApp::onButtonEvent);
+    gBrushErasers->setPosition(ofGetWidth()/4.0 * 3, 20);
+
     
     //Doing audio setup now.
     float sampleRate = setAVSessionSampleRate(44100);

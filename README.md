@@ -17,7 +17,7 @@ Clone this repository and check the folder hierarchy of the app follows the open
 
 Update the project with Project Generator.
 
-Open with XCode - the project will probably need a provisioning profile as per Apple requirement, for more info check the XCode notes [here](http://mlab.taik.fi/mediacode/archives/13506).
+Open with XCode - the project will probably need a provisioning profile as per Apple requirements, for more info check the XCode notes [here](http://mlab.taik.fi/mediacode/archives/13506).
 
 With an iPad connected, XCode should be able to compile and install the application to the device.
 
